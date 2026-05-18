@@ -3,9 +3,9 @@ import React from 'react'
 export const Footer = () => {
   let footerStyle = {
     position : "relative",
-    top : "70vh",
     width : "100%",
-    border : "2px solid red"
+    border : "2px solid red",
+    marginTop: "3rem"
   }
   return (
     

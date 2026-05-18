@@ -3,13 +3,17 @@ import Header from "./My components/Header";
 import { Todos } from './My components/Todos';
 import { Footer } from './My components/Footer';
 import { AddTodo } from './My components/AddTodo';
-import React, { useState, useEffect } from 'react';
-
+import React, { useState, useEffect } from 'react';  
+import { About } from './My components/About';
+import {
+  Routes,
+  Route
+} from "react-router-dom";
 function App() {
 
   let initTodos;
 
-  // 1. Safe check: if it is null or contains the corrupt string, initialize empty
+  
   if (localStorage.getItem("todos") === null || localStorage.getItem("todos") === "[object JSON]") {
     initTodos = [];
 
@@ -53,12 +57,28 @@ function App() {
 
   return (
     <>
-      <Header title="My Todos List" searchBar={true} />
-      <AddTodo addTodo={addTodo} />
-      <Todos todos={todos} onDelete={onDelete} />
+      <Header title="My Todos List" searchBar={false} />
+      <Routes>
+        <Route path="/" element={
+          <div style={{minHeight: '90vh'}}>
+            <AddTodo addTodo={addTodo} />
+            <Todos todos={todos} onDelete={onDelete} />
+          </div>
+        } />
+      
+        <Route path="/about" element={
+          <div style={{minHeight: '90vh'}}>
+            <About />
+          </div>
+        } />
+      </Routes>
       <Footer />
     </>
   );
 }
 
 export default App;
+
+
+
+
